@@ -3,12 +3,15 @@ jobs:
     build-and-test:
      machine:
       image: ubuntu-2004:2024.01.2
+      docker_layer_catching: true
      steps:
       -checkout
       - run: make deps
       - run: make lint
       - run: make test
       - run: make docker_build
+      - make docker_push
+      - run
 workflows:
     basic:
      jobs:
