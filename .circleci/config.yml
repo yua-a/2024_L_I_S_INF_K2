@@ -2,16 +2,13 @@ version: 2.1
 jobs:
   build-and-test:
     machine:
-      image: ubuntu-2004:2024.01.2
-      docker_layer_catching: true
+      image: ubuntu-2204:2024.01.2
     steps:
-      -checkout
+      - checkout
       - run: make deps
       - run: make lint
       - run: make test
       - run: make docker_build
-      - make docker_push
-      - run
 workflows:
   basic:
     jobs:
